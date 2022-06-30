@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'teamapp';
+  newMemberName = '';
+  members: string[] = [];
+  errorMessage: string = '';
+
+  onInput(member: string) {
+    this.newMemberName = member;
+
+  }
+
+  addMember() {
+
+    if (!this.newMemberName) {
+      this.errorMessage = "Name can't be empty";
+      return;
+    }
+
+    this.members.push(this.newMemberName);
+    this.newMemberName = "";
+    this.errorMessage = "";
+
+  }
 }
